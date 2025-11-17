@@ -1,19 +1,11 @@
 import {useState} from "react";
 import {deposit, withdraw} from "../actions/accountActions.js";
 import {useDispatch} from "react-redux";
-import {putQuote} from "../actions/quoteAction.js";
+import {fetchQuote} from "../actions/quoteAction.js";
 
 const Operation = () => {
     const [sum, setSum] = useState(0);
     const dispatch = useDispatch();
-
-    const fetchQuote = () => {
-        dispatch(putQuote('Loading...'))
-        fetch('https://api.gameofthronesquotes.xyz/v1/random')
-            .then(response => response.json())
-            .then(data => dispatch(putQuote(data.sentence)))
-            .catch(() => dispatch(putQuote('Error fetching quote')))
-    }
 
     return (
         <>
@@ -36,7 +28,7 @@ const Operation = () => {
             <div className={'flex justify-center mt-5'}>
                 <button
                     className={'bg-blue-300 hover:bg-blue-400 text-white font-bold rounded-lg py-2 px-4'}
-                    onClick={fetchQuote}
+                    onClick={() => dispatch(fetchQuote())}
                 >Get Quote</button>
             </div>
         </>
