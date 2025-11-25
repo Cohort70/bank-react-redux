@@ -1,10 +1,10 @@
 import {memo} from "react";
 
-const Bank = ({info}) => {
-    console.log(`Render Bank ${info.name}`)
+const Bank = ({info, index}) => {
+    console.log(`Render Bank ${info(index).name}`)
 
     return (
-        <h1 className={'font-bold text-8xl text-[gold]'}>Iron Bank of {info.name}</h1>
+        <h1 className={'font-bold text-8xl text-[gold]'}>Iron Bank of {info(index).name}</h1>
     )
 }
 
