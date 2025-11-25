@@ -1,10 +1,12 @@
 import {useSelector} from "react-redux";
 import Bank from "./Bank.jsx";
+import {useState} from "react";
 
 const Balance = () => {
     const balance = useSelector(state => state.balance)
     const quote = useSelector(state => state.quote)
-    const info = 'Braavos'
+    // const info = {name: 'Braavos'}
+    const [info] = useState({name: 'Braavos'})
 
     console.log('Render Balance')
 
